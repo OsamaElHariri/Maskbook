@@ -54,6 +54,7 @@ export const Web3Context: Web3ProviderType = {
     getAssetList: WalletRPC.getAssetsList,
     getAssetsListNFT: WalletRPC.getAssetsListNFT,
     getERC721TokensPaged,
+    getTransactionList: WalletRPC.getTransactionList,
 }
 
 async function getWallets() {

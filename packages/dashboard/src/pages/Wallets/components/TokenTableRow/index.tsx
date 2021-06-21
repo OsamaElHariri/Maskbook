@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cell: {
         padding: '16px 28px',
+        border: 'none',
     },
 }))
 
