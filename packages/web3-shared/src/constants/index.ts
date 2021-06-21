@@ -2,6 +2,19 @@ import { ChainId } from '../types'
 
 export * from './tokens'
 
+const ETHEREUM_TOKEN_ASSET_BASE_URIS = [
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum',
+    'https://rawcdn.githack.com/trustwallet/assets/master/blockchains/ethereum',
+]
+const SMARTCHAIN_TOKEN_ASSET_BASE_URIS = [
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain',
+    'https://rawcdn.githack.com/trustwallet/assets/master/blockchains/smartchain',
+]
+const POLYGON_TOKEN_ASSET_BASE_URIS = [
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon',
+    'https://rawcdn.githack.com/trustwallet/assets/master/blockchains/polygon',
+]
+
 export const CONSTANTS = {
     // token lists
     ERC20_TOKEN_LISTS: {
@@ -45,5 +58,16 @@ export const CONSTANTS = {
         [ChainId.BSCT]: '0x6e5BB1a5Ad6F68A8D7D6A5e47750eC15773d6042',
         [ChainId.Matic]: '0xC119574D5Fb333F5AC018658D4d8b5035E16bf39',
         [ChainId.Mumbai]: '0x6B70EC653c4331bdD0D0DCC7C941eb594e69a91d',
+    },
+    TOKEN_ASSET_BASE_URI: {
+        [ChainId.Mainnet]: ETHEREUM_TOKEN_ASSET_BASE_URIS,
+        [ChainId.Ropsten]: ETHEREUM_TOKEN_ASSET_BASE_URIS,
+        [ChainId.Rinkeby]: ETHEREUM_TOKEN_ASSET_BASE_URIS,
+        [ChainId.Kovan]: ETHEREUM_TOKEN_ASSET_BASE_URIS,
+        [ChainId.Gorli]: ETHEREUM_TOKEN_ASSET_BASE_URIS,
+        [ChainId.BSC]: SMARTCHAIN_TOKEN_ASSET_BASE_URIS,
+        [ChainId.BSCT]: SMARTCHAIN_TOKEN_ASSET_BASE_URIS,
+        [ChainId.Matic]: POLYGON_TOKEN_ASSET_BASE_URIS,
+        [ChainId.Mumbai]: POLYGON_TOKEN_ASSET_BASE_URIS,
     },
 }
