@@ -2856,6 +2856,7 @@ packages:
 
   /@dimensiondev/uniswap-sdk/3.0.4-20210619092641-a270dc0_418b2ad04426b02e1076b55b7e1862e2:
     resolution: {integrity: sha512-gBqLEIubW2wE94zvuJLE36bybUMF75MLbrUihzLlk0vwGcvvweKWbnDtN1iLcFWqVy5e7G2+z+1xxm9bNRDaRg==, tarball: download/@dimensiondev/uniswap-sdk/3.0.4-20210619092641-a270dc0/56ed8ddc9e83283599390103198780fd19cf8fc411155518d6367c3bb5eaffc1}
+    engines: {node: '>=10'}
     peerDependencies:
       '@ethersproject/address': ^5.0.0-beta
       '@ethersproject/contracts': ^5.0.0-beta
