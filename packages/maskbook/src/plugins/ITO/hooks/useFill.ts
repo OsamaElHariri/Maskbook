@@ -3,8 +3,8 @@ import { useAsync } from 'react-use'
 import { omit } from 'lodash-es'
 import BigNumber from 'bignumber.js'
 import Web3Utils from 'web3-utils'
-import type { ITO2 } from '@dimensiondev/contracts/types/ITO2'
-import type { NonPayableTx } from '@dimensiondev/contracts/types/types'
+import type { ITO2 } from '@masknet/contracts/types/ITO2'
+import type { NonPayableTx } from '@masknet/contracts/types/types'
 import {
     TransactionEventType,
     TransactionStateType,

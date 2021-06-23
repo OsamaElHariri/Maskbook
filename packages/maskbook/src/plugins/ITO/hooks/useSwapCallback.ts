@@ -1,8 +1,8 @@
-import type { ITO } from '@dimensiondev/contracts/types/ITO'
-import type { ITO2 } from '@dimensiondev/contracts/types/ITO2'
-import type { Qualification } from '@dimensiondev/contracts/types/Qualification'
-import type { Qualification2 } from '@dimensiondev/contracts/types/Qualification2'
-import type { PayableTx } from '@dimensiondev/contracts/types/types'
+import type { ITO } from '@masknet/contracts/types/ITO'
+import type { ITO2 } from '@masknet/contracts/types/ITO2'
+import type { Qualification } from '@masknet/contracts/types/Qualification'
+import type { Qualification2 } from '@masknet/contracts/types/Qualification2'
+import type { PayableTx } from '@masknet/contracts/types/types'
 import { isZero } from '@masknet/shared'
 import {
     currySameAddress,
