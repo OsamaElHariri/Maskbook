@@ -15,7 +15,14 @@ import {
 import BigNumber from 'bignumber.js'
 import { useI18N } from '../../../utils'
 import ActionButton from '../../../extension/options-page/DashboardComponents/ActionButton'
-import { useAccount, useConstant, TOKEN_CONSTANTS, isSameAddress, getChainDetailed } from '@masknet/web3-shared'
+import {
+    useAccount,
+    useConstantNext,
+    TOKEN_CONSTANTS,
+    isSameAddress,
+    getChainDetailed,
+    TransactionStateType,
+} from '@masknet/web3-shared'
 import { useAvailabilityComputed } from '../hooks/useAvailabilityComputed'
 import { usePoolTradeInfo } from '../hooks/usePoolTradeInfo'
 import { TokenIcon } from '../../../extension/options-page/DashboardComponents/TokenIcon'
@@ -24,6 +31,8 @@ import { formatBalance, FormattedBalance, isZero, pow10 } from '@masknet/shared'
 import formatDateTime from 'date-fns/format'
 import { JSON_PayloadInMask, ITO_Status } from '../types'
 import { MSG_DELIMITER } from '../constants'
+import { useDestructCallback } from '../hooks/useDestructCallback'
+import { useTransactionDialog } from '../../../web3/hooks/useTransactionDialog'
 
 const useStyles = makeStyles((theme) => ({
     top: {
@@ -101,15 +110,22 @@ export interface PoolInListProps {
     exchange_in_volumes: string[]
     exchange_out_volumes: string[]
     onSend?: (pool: JSON_PayloadInMask) => void
-    onWithdraw?: (payload: JSON_PayloadInMask) => void
+    onRetry: () => void
 }
 
 export function PoolInList(props: PoolInListProps) {
     const { t } = useI18N()
     const classes = useStyles()
-    const { pool, exchange_in_volumes, exchange_out_volumes, onSend, onWithdraw } = props
+    const { pool, exchange_in_volumes, exchange_out_volumes, onSend, onRetry } = props
 
-    const NATIVE_TOKEN_ADDRESS = useConstant(TOKEN_CONSTANTS, 'NATIVE_TOKEN_ADDRESS')
+    //#region withdraw
+    const [destructState, destructCallback, resetDestructCallback] = useDestructCallback(pool.contract_address)
+    useTransactionDialog(null, destructState, TransactionStateType.CONFIRMED, () => {
+        onRetry()
+        resetDestructCallback()
+    })
+    //#endregion
+    const NATIVE_TOKEN_ADDRESS = useConstantNext(TOKEN_CONSTANTS).NATIVE_TOKEN_ADDRESS
     const account = useAccount()
     const { computed: availabilityComputed, loading: loadingAvailability } = useAvailabilityComputed(pool)
     const { value: tradeInfo, loading: loadingTradeInfo } = usePoolTradeInfo(pool.pid, account)
@@ -128,7 +144,7 @@ export function PoolInList(props: PoolInListProps) {
         return (
             <>
                 {loadingTradeInfo || loadingAvailability ? null : canWithdraw ? (
-                    <ActionButton size="small" variant="contained" onClick={() => onWithdraw?.(pool)}>
+                    <ActionButton size="small" variant="contained" onClick={() => destructCallback(pool.pid)}>
                         {t('plugin_ito_withdraw')}
                     </ActionButton>
                 ) : canSend ? (

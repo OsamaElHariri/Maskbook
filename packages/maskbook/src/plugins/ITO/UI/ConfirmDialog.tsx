@@ -11,7 +11,7 @@ import {
     resolveAddressLinkOnExplorer,
     isNative,
     FungibleTokenDetailed,
-    useConstant,
+    useConstantNext,
     useChainId,
 } from '@masknet/web3-shared'
 import { decodeRegionCode, regionCodes } from '../hooks/useRegion'
@@ -114,7 +114,7 @@ export function ConfirmDialog(props: ConfirmDialogProps) {
     const classes = useStyles()
     const { t } = useI18N()
     const chainId = useChainId()
-    const DEFAULT_QUALIFICATION_ADDRESS = useConstant(ITO_CONSTANTS, 'DEFAULT_QUALIFICATION_ADDRESS')
+    const DEFAULT_QUALIFICATION_ADDRESS = useConstantNext(ITO_CONSTANTS).DEFAULT_QUALIFICATION2_ADDRESS
     const showQualification =
         poolSettings?.advanceSettingData.contract &&
         poolSettings?.qualificationAddress !== DEFAULT_QUALIFICATION_ADDRESS
