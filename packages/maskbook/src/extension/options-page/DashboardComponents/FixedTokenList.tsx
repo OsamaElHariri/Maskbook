@@ -10,13 +10,11 @@ import {
     FungibleTokenDetailed,
     EthereumTokenType,
     currySameAddress,
+    useERC20TokensDetailedFromTokenLists,
+    TokenListsState,
 } from '@masknet/web3-shared'
 import { useStylesExtends } from '../../../components/custom-ui-helper'
 import { TokenInList } from './TokenInList'
-import {
-    TokenListsState,
-    useERC20TokensDetailedFromTokenLists,
-} from '../../../web3/hooks/useERC20TokensDetailedFromTokenLists'
 
 const useStyles = makeStyles((theme) => ({
     list: {},
