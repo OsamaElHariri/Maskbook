@@ -13,7 +13,7 @@ import {
 } from '@masknet/web3-shared'
 import { useStylesExtends } from '../../../components/custom-ui-helper'
 import { useImageFailover } from '../../../utils'
-import SPECIAL_ICON_LIST from './TokenIconSpeialIconList.json'
+import SPECIAL_ICON_LIST from './TokenIconSpecialIconList.json'
 
 //#region fix icon image
 function resolveTokenIconURLs(address: string, baseURIs: string[], chainId: ChainId, logoURI?: string) {
